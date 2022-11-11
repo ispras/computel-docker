@@ -1,0 +1,41 @@
+
+
+(тут я смотрю приватный ключ, добавляю его в наш гитлаб и качаю референсы, шаг необязательный каке-то фастки для теста лежат в computel/test)
+    2  vim .ssh/authorized_keys 
+    3  git clone https://gitlab.ispras.ru/bioinformatics/warp.git
+    4  find -name NA*
+    5  cd warp/
+    6  git checkout ispras
+    7  find -name NA*
+    8  cp ./pipelines/ispras/dna_seq/germline/single_sample/NA12878_20k_H06HDADXX130110.1.ATCACGAT.20k_reads_1.fastq.gz ..
+    9  cp ./pipelines/ispras/dna_seq/germline/single_sample/NA12878_20k_H06HDADXX130110.1.ATCACGAT.20k_reads_2.fastq.gz ..
+   10  cd
+
+(как установить computel на пустую машину)
+    1  git clone https://github.com/lilit-nersisyan/computel.git
+   12  cd computel/
+   13  ls
+   14  sudo apt install dirmngr gnupg apt-transport-https ca-certificates software-properties-common
+   27  sudo apt update
+   30  sudo apt -y install r-base
+   31  R -version
+   34  sudo apt install samtools
+   99  wget https://github.com/BenLangmead/bowtie2/releases/download/v2.4.4/bowtie2-2.4.4-linux-x86_64.zip
+  100  unzip bowtie2-2.4.
+  101  unzip bowtie2-2.4.4-linux-x86_64.zip 
+  102  cd bowtie2-2.4.4-linux-x86_64/
+  103  ls
+  104  sudo cp bowtie2* /usr/bin/
+  106  cd ../
+  107  ./computel.sh -1 ~/NA12878_20k_H06HDADXX130110.1.ATCACGAT.20k_reads_1.fastq.gz -2 ~/NA12878_20k_H06HDADXX130110.1.ATCACGAT.20k_reads_2.fastq.gz 
+  111  file computel_out/tel.length.txt 
+  112  vim computel_out/tel.length.txt 
+ 
+
+
+большие файлы (дают нормальный результат)
+  117  wget https://storage.googleapis.com/genomics-public-data/platinum-genomes/fastq/ERR194161_1.fastq.gz
+  144  wget https://storage.googleapis.com/genomics-public-data/platinum-genomes/fastq/ERR194161_2.fastq.gz
+  171  ./computel.sh -1 /var/local/ERR194161_1.fastq.gz -2 /var/local/ERR194161_2.fastq.gz
+
+
