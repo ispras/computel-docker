@@ -1,7 +1,7 @@
 
 
 (тут я смотрю приватный ключ, добавляю его в наш гитлаб и качаю референсы, шаг необязательный каке-то фастки для теста лежат в computel/test)
-    2  vim .ssh/authorized_keys 
+    2  vim .ssh/authorized_keys
     3  git clone https://gitlab.ispras.ru/bioinformatics/warp.git
     4  find -name NA*
     5  cd warp/
@@ -22,15 +22,15 @@
    34  sudo apt install samtools
    99  wget https://github.com/BenLangmead/bowtie2/releases/download/v2.4.4/bowtie2-2.4.4-linux-x86_64.zip
   100  unzip bowtie2-2.4.
-  101  unzip bowtie2-2.4.4-linux-x86_64.zip 
+  101  unzip bowtie2-2.4.4-linux-x86_64.zip
   102  cd bowtie2-2.4.4-linux-x86_64/
   103  ls
   104  sudo cp bowtie2* /usr/bin/
   106  cd ../
-  107  ./computel.sh -1 ~/NA12878_20k_H06HDADXX130110.1.ATCACGAT.20k_reads_1.fastq.gz -2 ~/NA12878_20k_H06HDADXX130110.1.ATCACGAT.20k_reads_2.fastq.gz 
-  111  file computel_out/tel.length.txt 
-  112  vim computel_out/tel.length.txt 
- 
+  107  ./computel.sh -1 ~/NA12878_20k_H06HDADXX130110.1.ATCACGAT.20k_reads_1.fastq.gz -2 ~/NA12878_20k_H06HDADXX130110.1.ATCACGAT.20k_reads_2.fastq.gz
+  111  file computel_out/tel.length.txt
+  112  vim computel_out/tel.length.txt
+
 
 
 большие файлы (дают нормальный результат)
@@ -38,4 +38,47 @@
   144  wget https://storage.googleapis.com/genomics-public-data/platinum-genomes/fastq/ERR194161_2.fastq.gz
   171  ./computel.sh -1 /var/local/ERR194161_1.fastq.gz -2 /var/local/ERR194161_2.fastq.gz
 
+----------------------------------------
+wget https://github.com/lilit-nersisyan/computel/archive/refs/heads/master.zip
+unzip master.zip
+cd computel-master/
 
+apk --no-cache add dirmngr
+apk --no-cache add gnupg
+
+apk --no-cache add apt-transport-https - беды
+Это фиктивный переходный пакет — поддержка https была перенесена в пакет apt
+в версии 1.5. Его можно безопасно удалить.
+
+apk --no-cache add ca-certificates
+
+apk --no-cache add software-properties-common - беды
+Это программное обеспечение предоставляет средства для управления используемыми
+APT-репозиториями. Оно управляет как дистрибутивом, так и независимыми репозиториями программ.
+
+apk --no-cache add R - ? возможно можно как-то использовать образ r-base
+
+
+Из https://gitlab.ispras.ru/bioinformatics/warp/-/blob/ispras/dockers/ispras/samtools/Dockerfile
+для установки samtools
+
+ARG SAMTOOLS_VERSION=1.11
+
+ENV TERM=xterm-256color \
+    SAMTOOLS_URL=https://github.com/samtools/samtools/releases/download/${SAMTOOLS_VERSION}/samtools-${SAMTOOLS_VERSION}.tar.bz2
+
+https://github.com/samtools/samtools/releases/download/1.11/samtools-1.11.tar.bz2
+
+# Install samtools
+    mkdir temp; \
+    cd temp; \
+    \
+    wget ${SAMTOOLS_URL}; \
+    tar -xf samtools-${SAMTOOLS_VERSION}.tar.bz2; \
+    cd samtools-${SAMTOOLS_VERSION}; \
+    \
+    ./configure; \
+    make; \
+    make install; \
+    \
+    rm -r /usr/gitc/temp;
