@@ -8,6 +8,7 @@ ENV TERM=xterm-256color \
 
 RUN apt update
 
+# for install R
 ENV TZ=America/Chicago 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
@@ -22,13 +23,18 @@ RUN apt install -y\
     r-base
 
 # Computel
-RUN wget https://github.com/lilit-nersisyan/computel/archive/refs/heads/master.zip 
-RUN unzip master.zip; \
+RUN wget https://github.com/lilit-nersisyan/computel/archive/refs/heads/master.zip; \
+    unzip master.zip; \
     cd computel-master/; \
-    chmod +x computel.sh
-
+    chmod +x computel.sh; \
+# Install bowtie2
+    wget https://github.com/BenLangmead/bowtie2/releases/download/v2.4.4/bowtie2-2.4.4-linux-x86_64.zip; \
+    unzip bowtie2-2.4.4-linux-x86_64.zip; \
+    cd bowtie2-2.4.4-linux-x86_64/; \
+    cp bowtie2* /usr/bin/; \
+    cd ..; \
 # Install samtools
-RUN mkdir temp; \
+    mkdir temp; \
     cd temp; \
     \
     wget ${SAMTOOLS_URL}; \
@@ -43,8 +49,3 @@ RUN mkdir temp; \
     cp /usr/local/bin/samtools* /usr/bin/; \
     rm /usr/local/bin/samtools*
 
-# Install bowtie2
-RUN wget https://github.com/BenLangmead/bowtie2/releases/download/v2.4.4/bowtie2-2.4.4-linux-x86_64.zip; \
-    unzip bowtie2-2.4.4-linux-x86_64.zip; \
-    cd bowtie2-2.4.4-linux-x86_64/; \
-    cp bowtie2* /usr/bin/
