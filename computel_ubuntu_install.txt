@@ -154,3 +154,10 @@ apk add --no-cache \
 
 wget https://downloads.sourceforge.net/project/bowtie-bio/bowtie2/2.2.8/bowtie2-2.2.8-linux-x86_64.zip
 unzip -d /usr/local bowtie2-2.2.8-linux-x86_64.zip
+
+./computel.sh -1 src/examples/tel_reads1.fq.gz -2 src/examples/tel_reads2.fq.gz -o mytest
+
+apt install pixmap
+apt install sp
+apt install ade4
+apt install segmented

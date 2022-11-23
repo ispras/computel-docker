@@ -21,7 +21,10 @@ RUN apt install -y\
     apt-transport-https \
     ca-certificates \
     software-properties-common \
-    r-base
+    r-base \
+# from pipeline.R
+    r-cran-seqinr \
+    r-cran-psych
 
 # Computel
 RUN wget ${COMPUTEL_URL}; \
