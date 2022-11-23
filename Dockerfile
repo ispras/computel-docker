@@ -53,3 +53,4 @@ RUN wget ${COMPUTEL_URL}; \
     cp /usr/local/bin/samtools* /usr/bin/; \
     rm /usr/local/bin/samtools*
 
+ENTRYPOINT [ "/computel/computel.sh", "--" ]
