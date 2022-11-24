@@ -1,5 +1,7 @@
 FROM ubuntu:20.04
 
+
+
 ARG COMPUTEL_VERSION=1.2
 ARG SAMTOOLS_VERSION=1.11
 
@@ -31,6 +33,7 @@ RUN wget ${COMPUTEL_URL}; \
     tar -xf computel.v${COMPUTEL_VERSION}.tar.gz; \
     cd computel/; \
     chmod +x computel.sh; \
+    mkdir mytest; \
 # Install bowtie2
     wget https://github.com/BenLangmead/bowtie2/releases/download/v2.4.4/bowtie2-2.4.4-linux-x86_64.zip; \
     unzip bowtie2-2.4.4-linux-x86_64.zip; \
@@ -53,4 +56,7 @@ RUN wget ${COMPUTEL_URL}; \
     cp /usr/local/bin/samtools* /usr/bin/; \
     rm /usr/local/bin/samtools*
 
-ENTRYPOINT [ "/computel/computel.sh", "--" ]
+# VOLUME ["/computel/mytest"]
+# VOLUME ["/home/mayer/gitlab/computel-docker/mytest"]
+
+ENTRYPOINT [ "/computel/computel.sh"]
