@@ -1,6 +1,5 @@
 # computel-docker
 
-## Запуск 
 ### in directory with Dockerfile
 docker build -t computel-docker:latest .
 
