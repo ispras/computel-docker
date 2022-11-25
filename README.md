@@ -1,6 +1,8 @@
 # computel-docker
 
-## Запуск
+## Запуск 
+### in directory with Dockerfile
+docker build -t computel-docker:latest .
 
-
-sudo docker run -it --rm -v /home/mayer/gitlab/computel-docker/mytest:/computel/mytest fe030ba81b68 computel/src/examples/tel_reads1.fq.gz -2 computel/src/examples/tel_reads2.fq.gz -o computel/mytest
+### in directory with data
+docker run -it --rm -v $(pwd):/data computel-docker:latest -1 NIST7035_TAAGGCGA_L002_R1_001_trimmed.fastq.gz -2 NIST7035_TAAGGCGA_L002_R2_001_trimmed.fastq.gz -o /data/mytest -proc 4
