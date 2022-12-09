@@ -13,6 +13,8 @@ RUN apt update
 ENV TZ=Europe/Moscow
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+COPY computel /computel
+
 RUN apt-get update; \
     apt install -y\
     wget \
@@ -29,8 +31,6 @@ RUN apt-get update; \
     r-cran-psych \
     && rm -rf /var/lib/apt/lists/*; \
 # Computel
-    wget ${COMPUTEL_URL}; \
-    tar -xf computel.v${COMPUTEL_VERSION}.tar.gz; \
     cd computel/; \
     chmod +x computel.sh; \
 # Install bowtie2
