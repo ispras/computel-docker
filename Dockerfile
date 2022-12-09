@@ -1,6 +1,4 @@
-FROM ubuntu:20.04
-
-
+FROM phusion/baseimage:master
 
 ARG COMPUTEL_VERSION=1.2
 ARG SAMTOOLS_VERSION=1.11
@@ -15,7 +13,8 @@ RUN apt update
 ENV TZ=Europe/Moscow
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt install -y\
+RUN apt-get update; \
+    apt install -y\
     wget \
     unzip \
     dirmngr \
@@ -24,6 +23,7 @@ RUN apt install -y\
     ca-certificates \
     software-properties-common \
     r-base \
+    file \
 # from pipeline.R
     r-cran-seqinr \
     r-cran-psych
