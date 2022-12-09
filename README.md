@@ -1,13 +1,15 @@
 # computel-docker
 
-### Install docker
-1
-2
+### Install docker and post-installation steps
+1. https://docs.docker.com/engine/install/ubuntu/
+2. https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user
 
 ### Load submodules
+```
+cd computel
 git submodule init
-update
-
+git submodule update
+```
 
 ### Build the image
 ```
@@ -17,7 +19,7 @@ docker build -t computel-docker:latest .
 
 ### Container run 
 ```
-docker run -it --rm -v $(pwd):/data computel-docker:latest computel.sh -1 <fq1> -2 <fq2> -o /data/<output_path_dir> 
+docker run -it --rm -v $(pwd):/data computel-docker:latest computel.sh -1 <fq1> -2 <fq2> -o /<output_path_dir> 
 
 ```
 

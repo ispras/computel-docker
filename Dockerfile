@@ -27,10 +27,9 @@ RUN apt-get update; \
 # from pipeline.R
     r-cran-seqinr \
     r-cran-psych \
-    && rm -rf /var/lib/apt/lists/*; 
-
+    && rm -rf /var/lib/apt/lists/*; \
 # Computel
-RUN wget ${COMPUTEL_URL}; \
+    wget ${COMPUTEL_URL}; \
     tar -xf computel.v${COMPUTEL_VERSION}.tar.gz; \
     cd computel/; \
     chmod +x computel.sh; \
