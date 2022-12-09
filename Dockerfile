@@ -26,7 +26,8 @@ RUN apt-get update; \
     file \
 # from pipeline.R
     r-cran-seqinr \
-    r-cran-psych
+    r-cran-psych \
+    && rm -rf /var/lib/apt/lists/*; 
 
 # Computel
 RUN wget ${COMPUTEL_URL}; \
