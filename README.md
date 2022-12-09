@@ -1,6 +1,6 @@
 # computel-docker
 
-### Install docker and post-installation steps
+### Install docker 
 1. https://docs.docker.com/engine/install/ubuntu/
 2. https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user
 
