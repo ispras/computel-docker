@@ -1,6 +1,5 @@
 FROM phusion/baseimage:master
 
-ARG COMPUTEL_VERSION=1.2
 ARG SAMTOOLS_VERSION=1.11
 
 ENV TERM=xterm-256color \
