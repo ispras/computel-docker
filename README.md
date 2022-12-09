@@ -1,7 +1,18 @@
 # computel-docker
 
-### in directory with Dockerfile
+### Build the image
+```
+cd computel-docker
 docker build -t computel-docker:latest .
+```
 
-### in directory with data
-docker run -it --rm -v $(pwd):/data computel-docker:latest computel.sh -1 NIST7035_TAAGGCGA_L002_R1_001_trimmed.fastq.gz -2 NIST7035_TAAGGCGA_L002_R2_001_trimmed.fastq.gz -o /data/mytest -proc 4
+### Container run 
+```
+docker run -it --rm -v $(pwd):/data computel-docker:latest computel.sh -1 <fq1> -2 <fq2> -o /data/<output_path_dir> 
+```
+
+### Test run
+```
+cd test
+docker run -it -v $(pwd):/data computel-docker:latest computel.sh -1 tel_reads1.fq.gz -2 tel_reads2.fq.gz -o /data/mytest -proc 4
+```
