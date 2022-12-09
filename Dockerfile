@@ -53,8 +53,9 @@ RUN wget ${COMPUTEL_URL}; \
     \
     cd ..; \
     cp /usr/local/bin/samtools* /usr/bin/; \
-    rm /usr/local/bin/samtools*
+    rm /usr/local/bin/samtools*; 
 
+ENV PATH="$HOME/computel:$PATH"
 WORKDIR /data
 
-ENTRYPOINT [ "/computel/computel.sh"]
+
