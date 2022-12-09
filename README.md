@@ -24,7 +24,7 @@ docker build -t computel-docker:latest .
 
 ## Container run 
 ```
-docker run -it --rm -v $(pwd):/data computel-docker:latest computel.sh -1 <fq1> -2 <fq2> -o /<output_path_dir> 
+docker run -it --rm -v $(pwd):/data computel-docker:latest computel.sh -1 <fq1> -2 <fq2> -o <output_path_dir> 
 ```
 
 ## Test run
