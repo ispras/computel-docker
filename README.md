@@ -14,7 +14,7 @@ git submodule update
 ## Build the image
 ```
 cd computel-docker
-docker build -t computel-docker-1.2:latest .
+docker build -t computel-docker-1.2:latest --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .
 ```
 
 ## Container run 
