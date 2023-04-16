@@ -1,3 +1,3 @@
 [submodule "computel"]
 	path = computel
-	url = git@gitlab.ispras.ru:bioinformatics/computel.git
+	url = https://github.com/lilit-nersisyan/computel.git
