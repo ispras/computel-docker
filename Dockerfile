@@ -54,17 +54,7 @@ RUN apt-get update; \
     cp /usr/local/bin/samtools* /usr/bin/; \
     rm /usr/local/bin/samtools*; 
 
-RUN chmod +x /computel/bin/bowtie2-build; \
-    chmod +x /computel/bin/bowtie2-align;
-
 ENV PATH="$HOME/computel:$PATH"
 WORKDIR /data
-
-ARG USER_ID
-ARG GROUP_ID
-
-RUN addgroup --gid $GROUP_ID user
-RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID user
-USER user
 
 
